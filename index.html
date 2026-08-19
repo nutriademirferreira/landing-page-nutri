@@ -115,6 +115,15 @@
   .bonus-card h3{font-size:16px; margin-bottom:8px;}
   .bonus-card p{font-size:13px; color:var(--muted);}
 
+  /* PRICE REVEAL — mecanismo das páginas Nexxo */
+  .price-teaser{display:flex; align-items:center; gap:8px; font-size:13px; color:var(--faint);
+    margin-bottom:22px; padding:10px 0;}
+  .prices.revealed .price-teaser{display:none;}
+  .price-block{display:none; margin-bottom:2px;}
+  .prices.revealed .price-block{display:block;}
+  .price-reveal-row{text-align:center; margin-top:30px;}
+  .price-reveal-row p{color:var(--muted); font-size:13.5px; margin-bottom:16px;}
+
   /* PRECOS */
   .prices{display:grid; grid-template-columns:repeat(3,1fr); gap:18px;}
   .price{border:1px solid var(--line); border-radius:var(--radius); padding:30px 24px; background:var(--card);
@@ -286,29 +295,42 @@
       <h2>Investimento</h2>
       <p>O mesmo acompanhamento de seis meses, em três condições de pagamento</p>
     </div>
-    <div class="prices">
+    <div class="prices" id="prices">
       <div class="price">
         <div class="price-name">Pix à vista</div>
-        <div class="price-amount">R$ 2.471,04</div>
+        <div class="price-teaser">🔒 valor oculto</div>
+        <div class="price-block">
+          <div class="price-amount">R$ 2.471,04</div>
         <div class="price-total">pagamento único</div>
+        </div>
         <div class="price-note">4% de desconto sobre o valor parcelado</div>
       </div>
       <div class="price featured">
         <span class="price-badge">mais escolhido</span>
         <div class="price-name">6x no cartão</div>
-        <div class="price-amount">6x R$ 429</div>
+        <div class="price-teaser">🔒 valor oculto</div>
+        <div class="price-block">
+          <div class="price-amount">6x R$ 429</div>
         <div class="price-total">R$ 2.574 no total · sem juros</div>
+        </div>
         <div class="price-note">uma parcela por mês de acompanhamento</div>
       </div>
       <div class="price referral">
         <span class="price-badge alt">por indicação</span>
         <div class="price-name">Indicado por paciente</div>
-        <div class="price-amount">6x R$ 399</div>
+        <div class="price-teaser">🔒 valor oculto</div>
+        <div class="price-block">
+          <div class="price-amount">6x R$ 399</div>
         <div class="price-total">R$ 2.394 no total · sem juros</div>
         <div class="price-alt">ou R$ 2.298,24 à vista no Pix</div>
-        <div class="price-note">quem chega indicado por um paciente com acompanhamento ativo entra por esse valor</div>
+        </div>
+        <div class="price-note">condição para quem chega indicado por um paciente com acompanhamento ativo</div>
       </div>
     </div>
+    </div>
+    <div class="price-reveal-row">
+      <p>Você já viu tudo o que está incluso. Agora, os valores:</p>
+      <button class="btn" id="revealPricesBtn" aria-expanded="false" aria-controls="prices">Ver valores</button>
     </div>
   </section>
 
@@ -358,6 +380,14 @@
       }
     });
   });
+  var revealBtn = document.getElementById('revealPricesBtn');
+  var pricesEl = document.getElementById('prices');
+  revealBtn.addEventListener('click', function(){
+    var nowRevealed = pricesEl.classList.toggle('revealed');
+    revealBtn.textContent = nowRevealed ? 'Esconder valores' : 'Ver valores';
+    revealBtn.setAttribute('aria-expanded', nowRevealed ? 'true' : 'false');
+  });
+
   var stepObserver = new IntersectionObserver(function(entries){
     entries.forEach(function(entry){
       entry.target.classList.toggle('in-view', entry.isIntersecting);
