@@ -105,7 +105,7 @@
   .fone-corpo{position:relative; border-radius:40px; padding:9px; background:linear-gradient(160deg,#4a4a4a,#101010 42%,#2c2c2c);
     box-shadow:0 26px 60px -24px #000, inset 0 0 0 1px rgba(255,255,255,0.12);}
   .fone-tela{position:relative; border-radius:32px; overflow:hidden; background:#E5EADA; display:block; padding-top:42px;}
-  .fone-tela img{display:block; width:100%; height:auto;}
+  .fone-tela img{width:100%; height:auto;}
   .fone-ilha{position:absolute; top:13px; left:50%; transform:translateX(-50%); width:78px; height:23px;
     background:#070707; border-radius:999px; z-index:2;}
   .fone-brilho{position:absolute; inset:0; border-radius:32px; pointer-events:none; z-index:1;
@@ -121,8 +121,8 @@
   .app-janela{position:relative; aspect-ratio:480/1039; overflow-y:auto; overflow-x:hidden;
     -webkit-overflow-scrolling:touch; scrollbar-width:none; background:#E5EADA;}
   .app-janela::-webkit-scrollbar{display:none;}
-  .app-tela{display:none; width:100%; height:auto;}
-  .app-tela.ativa{display:block;}
+  .app-janela .app-tela{display:none; width:100%; height:auto;}
+  .app-janela .app-tela.ativa{display:block;}
   .app-nav{position:absolute; left:0; right:0; bottom:0; height:6.83%; z-index:4;}
   .app-barra{display:none; width:100%; height:100%; object-fit:cover;}
   .app-barra.ativa{display:block;}
