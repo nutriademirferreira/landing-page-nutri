@@ -116,17 +116,23 @@
     .fone{width:222px;}
   }
 
-  /* APP NAVEGÁVEL dentro do mockup */
+  /* APP NAVEGÁVEL dentro do mockup: a tela rola e a barra de abas fica fixa */
   .app-palco{position:relative; line-height:0;}
-  .app-tela{display:block; width:100%; height:auto; position:absolute; inset:0; opacity:0;
-    transition:opacity .22s ease; pointer-events:none;}
-  .app-tela:first-of-type{position:relative;}
-  .app-tela.ativa{opacity:1;}
+  .app-janela{position:relative; aspect-ratio:480/1039; overflow-y:auto; overflow-x:hidden;
+    -webkit-overflow-scrolling:touch; scrollbar-width:none; background:#E5EADA;}
+  .app-janela::-webkit-scrollbar{display:none;}
+  .app-tela{display:none; width:100%; height:auto;}
+  .app-tela.ativa{display:block;}
+  .app-nav{position:absolute; left:0; right:0; bottom:0; height:6.83%; z-index:4;}
+  .app-barra{display:none; width:100%; height:100%; object-fit:cover;}
+  .app-barra.ativa{display:block;}
+  .app-nav .app-toque{top:0; height:100%;}
   .app-toque{position:absolute; appearance:none; background:none; border:none; padding:0; margin:0;
-    cursor:pointer; border-radius:10px; z-index:3; -webkit-tap-highlight-color:transparent;}
+    cursor:pointer; border-radius:10px; z-index:5; -webkit-tap-highlight-color:transparent;}
   .app-toque:focus-visible{outline:2px solid var(--gold); outline-offset:2px;}
-  .app-vista{display:none;}
-  .app-palco.na-evolucao .app-vista{display:block;}
+  .app-vista, .app-treino-sel{display:none;}
+  .app-palco[data-atual^="evolucao"] .app-vista{display:block;}
+  .app-palco[data-atual="treino"] .app-treino-sel, .app-palco[data-atual="cardio"] .app-treino-sel{display:block;}
   .app-dica{margin-top:16px; text-align:center; font-size:12.5px; color:var(--faint);}
   .app-dica b{color:var(--gold); font-weight:500;}
 
@@ -256,30 +262,43 @@
           <div class="fone-tela">
             <div class="fone-ilha"></div>
             <div class="fone-brilho"></div>
-<div class="app-palco" id="appDemo">
-            <img class="app-tela ativa" data-tela="hoje" src="telas/hoje.jpg" width="480" height="1038" alt="Tela Hoje do aplicativo" >
-            <img class="app-tela" data-tela="dieta" src="telas/dieta.jpg" width="480" height="1038" alt="Tela Dieta do aplicativo" loading="lazy">
-            <img class="app-tela" data-tela="treino" src="telas/treino.jpg" width="480" height="1038" alt="Tela Treino do aplicativo" loading="lazy">
-            <img class="app-tela" data-tela="evolucao-corpo" src="telas/evolucao-corpo.jpg" width="480" height="1038" alt="Tela Evolução do aplicativo" loading="lazy">
-            <img class="app-tela" data-tela="exames" src="telas/exames.jpg" width="480" height="1038" alt="Tela Exames do aplicativo" loading="lazy">
-            <img class="app-tela" data-tela="mais" src="telas/mais.jpg" width="480" height="1038" alt="Tela Mais do aplicativo" loading="lazy">
-            <img class="app-tela" data-tela="evolucao-habitos" src="telas/evolucao-habitos.jpg" width="480" height="1038" alt="Tela Hábitos do aplicativo" loading="lazy">
-            <img class="app-tela" data-tela="evolucao-medidas" src="telas/evolucao-medidas.jpg" width="480" height="1038" alt="Tela Medidas do aplicativo" loading="lazy">
-            <img class="app-tela" data-tela="evolucao-fotos" src="telas/evolucao-fotos.jpg" width="480" height="1038" alt="Tela Fotos do aplicativo" loading="lazy">
-            <button class="app-toque" data-ir="hoje" aria-label="Abrir Hoje" style="left:1.54%;top:93.13%;width:16.15%;height:5.57%"></button>
-            <button class="app-toque" data-ir="dieta" aria-label="Abrir Dieta" style="left:17.69%;top:93.13%;width:16.15%;height:5.57%"></button>
-            <button class="app-toque" data-ir="treino" aria-label="Abrir Treino" style="left:33.85%;top:93.13%;width:16.15%;height:5.57%"></button>
-            <button class="app-toque" data-ir="evolucao-corpo" aria-label="Abrir Evolução" style="left:50%;top:93.13%;width:16.15%;height:5.57%"></button>
-            <button class="app-toque" data-ir="exames" aria-label="Abrir Exames" style="left:66.15%;top:93.13%;width:16.15%;height:5.57%"></button>
-            <button class="app-toque" data-ir="mais" aria-label="Abrir Mais" style="left:82.31%;top:93.13%;width:16.15%;height:5.57%"></button>
-            <button class="app-toque app-vista" data-ir="evolucao-corpo" aria-label="Ver Corpo" style="left:5.13%;top:9.65%;width:22.05%;height:4.35%"></button>
-            <button class="app-toque app-vista" data-ir="evolucao-habitos" aria-label="Ver Hábitos" style="left:27.69%;top:9.65%;width:22.05%;height:4.35%"></button>
-            <button class="app-toque app-vista" data-ir="evolucao-medidas" aria-label="Ver Medidas" style="left:50.26%;top:9.65%;width:22.05%;height:4.35%"></button>
-            <button class="app-toque app-vista" data-ir="evolucao-fotos" aria-label="Ver Fotos" style="left:72.82%;top:9.65%;width:22.05%;height:4.35%"></button>
+<div class="app-palco" id="appDemo" data-atual="hoje">
+            <div class="app-janela">
+              <img class="app-tela ativa" data-tela="hoje" src="telas/hoje.jpg" alt="Tela Hoje do aplicativo">
+              <img class="app-tela" data-tela="dieta" src="telas/dieta.jpg" alt="Tela Dieta do aplicativo" loading="lazy">
+              <img class="app-tela" data-tela="treino" src="telas/treino.jpg" alt="Tela Treino do aplicativo" loading="lazy">
+              <img class="app-tela" data-tela="cardio" src="telas/cardio.jpg" alt="Tela Cardio do aplicativo" loading="lazy">
+              <img class="app-tela" data-tela="evolucao-corpo" src="telas/evolucao-corpo.jpg" alt="Tela Corpo do aplicativo" loading="lazy">
+              <img class="app-tela" data-tela="evolucao-habitos" src="telas/evolucao-habitos.jpg" alt="Tela Hábitos do aplicativo" loading="lazy">
+              <img class="app-tela" data-tela="evolucao-medidas" src="telas/evolucao-medidas.jpg" alt="Tela Medidas do aplicativo" loading="lazy">
+              <img class="app-tela" data-tela="evolucao-fotos" src="telas/evolucao-fotos.jpg" alt="Tela Fotos do aplicativo" loading="lazy">
+              <img class="app-tela" data-tela="exames" src="telas/exames.jpg" alt="Tela Exames do aplicativo" loading="lazy">
+              <img class="app-tela" data-tela="mais" src="telas/mais.jpg" alt="Tela Mais do aplicativo" loading="lazy">
+              <button class="app-toque app-vista" data-ir="evolucao-corpo" aria-label="Ver Corpo" style="left:5.13%;top:9.65%;width:22.05%;height:4.35%"></button>
+              <button class="app-toque app-vista" data-ir="evolucao-habitos" aria-label="Ver Hábitos" style="left:27.69%;top:9.65%;width:22.05%;height:4.35%"></button>
+              <button class="app-toque app-vista" data-ir="evolucao-medidas" aria-label="Ver Medidas" style="left:50.26%;top:9.65%;width:22.05%;height:4.35%"></button>
+              <button class="app-toque app-vista" data-ir="evolucao-fotos" aria-label="Ver Fotos" style="left:72.82%;top:9.65%;width:22.05%;height:4.35%"></button>
+              <button class="app-toque app-treino-sel" data-ir="treino" aria-label="Ver Musculação" style="left:5.13%;top:9.65%;width:44.1%;height:4.35%"></button>
+              <button class="app-toque app-treino-sel" data-ir="cardio" aria-label="Ver Cardio" style="left:49.230000000000004%;top:9.65%;width:44.1%;height:4.35%"></button>
+            </div>
+            <div class="app-nav">
+              <img class="app-barra ativa" data-nav="hoje" src="telas/nav-hoje.jpg" alt="" aria-hidden="true">
+              <img class="app-barra" data-nav="dieta" src="telas/nav-dieta.jpg" alt="" aria-hidden="true">
+              <img class="app-barra" data-nav="treino" src="telas/nav-treino.jpg" alt="" aria-hidden="true">
+              <img class="app-barra" data-nav="evolucao" src="telas/nav-evolucao.jpg" alt="" aria-hidden="true">
+              <img class="app-barra" data-nav="exames" src="telas/nav-exames.jpg" alt="" aria-hidden="true">
+              <img class="app-barra" data-nav="mais" src="telas/nav-mais.jpg" alt="" aria-hidden="true">
+              <button class="app-toque" data-ir="hoje" aria-label="Abrir Hoje" style="left:1.54%;width:16.15%"></button>
+              <button class="app-toque" data-ir="dieta" aria-label="Abrir Dieta" style="left:17.69%;width:16.15%"></button>
+              <button class="app-toque" data-ir="treino" aria-label="Abrir Treino" style="left:33.85%;width:16.15%"></button>
+              <button class="app-toque" data-ir="evolucao-corpo" aria-label="Abrir Evolução" style="left:50%;width:16.15%"></button>
+              <button class="app-toque" data-ir="exames" aria-label="Abrir Exames" style="left:66.15%;width:16.15%"></button>
+              <button class="app-toque" data-ir="mais" aria-label="Abrir Mais" style="left:82.31%;width:16.15%"></button>
+            </div>
           </div>
           </div>
         </div>
-        <div class="app-dica">toque nas abas do app · ou <b>arraste para o lado</b></div>
+        <div class="app-dica">toque nas abas · <b>role a tela</b> · arraste para o lado</div>
       </div>
       <div class="vitrine-texto">
         <h3>Navegue pelo aplicativo aqui mesmo</h3>
@@ -414,35 +433,34 @@
   (function(){
     var palco = document.getElementById('appDemo');
     if (!palco) return;
-    var telas = palco.querySelectorAll('.app-tela');
+    var janela = palco.querySelector('.app-janela');
+    var navDe = {"hoje": "hoje", "dieta": "dieta", "treino": "treino", "cardio": "treino", "exames": "exames", "mais": "mais", "evolucao-corpo": "evolucao", "evolucao-habitos": "evolucao", "evolucao-medidas": "evolucao", "evolucao-fotos": "evolucao"};
     var ordem = ['hoje','dieta','treino','evolucao-corpo','exames','mais'];
     function mostrar(chave){
       var achou = false;
-      telas.forEach(function(t){
-        var ativa = t.dataset.tela === chave;
-        t.classList.toggle('ativa', ativa);
-        if (ativa) achou = true;
+      palco.querySelectorAll('.app-tela').forEach(function(t){
+        var ativa = t.dataset.tela === chave; t.classList.toggle('ativa', ativa); if (ativa) achou = true;
       });
       if (!achou) return;
-      palco.classList.toggle('na-evolucao', chave.indexOf('evolucao') === 0);
+      var nav = navDe[chave] || 'hoje';
+      palco.querySelectorAll('.app-barra').forEach(function(b){ b.classList.toggle('ativa', b.dataset.nav === nav); });
       palco.dataset.atual = chave;
+      janela.scrollTop = 0;
     }
-    palco.dataset.atual = 'hoje';
     palco.querySelectorAll('.app-toque').forEach(function(b){
-      b.addEventListener('click', function(){ mostrar(b.dataset.ir); });
+      b.addEventListener('click', function(e){ e.preventDefault(); mostrar(b.dataset.ir); });
     });
-    // arraste lateral percorre as abas
-    var x0 = null;
-    palco.addEventListener('pointerdown', function(e){ x0 = e.clientX; });
+    var x0 = null, y0 = null;
+    palco.addEventListener('pointerdown', function(e){ x0 = e.clientX; y0 = e.clientY; });
     palco.addEventListener('pointerup', function(e){
       if (x0 === null) return;
-      var d = e.clientX - x0; x0 = null;
-      if (Math.abs(d) < 40) return;
+      var dx = e.clientX - x0, dy = e.clientY - y0; x0 = null;
+      if (Math.abs(dx) < 50 || Math.abs(dx) < Math.abs(dy)) return;  // rolar não troca de aba
       var atual = palco.dataset.atual || 'hoje';
-      var i = ordem.indexOf(atual.indexOf('evolucao') === 0 ? 'evolucao-corpo' : atual);
-      if (i < 0) i = 0;
-      var prox = ordem[Math.min(ordem.length - 1, Math.max(0, i + (d < 0 ? 1 : -1)))];
-      mostrar(prox);
+      if (atual.indexOf('evolucao') === 0) atual = 'evolucao-corpo';
+      if (atual === 'cardio') atual = 'treino';
+      var i = ordem.indexOf(atual); if (i < 0) i = 0;
+      mostrar(ordem[Math.min(ordem.length - 1, Math.max(0, i + (dx < 0 ? 1 : -1)))]);
     });
     palco.addEventListener('dragstart', function(e){ e.preventDefault(); });
   })();
