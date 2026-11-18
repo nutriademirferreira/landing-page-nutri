@@ -61,6 +61,46 @@
   .highlight > .highlight-inner > p{color:var(--muted); font-size:14.5px; max-width:600px; margin-bottom:20px;}
   .included-note{font-weight:700; font-size:11.5px; color:var(--gold); letter-spacing:0.04em; margin-bottom:18px;}
   .chips{display:flex; flex-wrap:wrap; gap:8px;}
+
+  /* OFERTA */
+  .oferta{position:relative; border-radius:var(--radius); margin:9vh 0 60px;}
+  .oferta::before{content:''; position:absolute; inset:-6px; border-radius:calc(var(--radius) + 6px);
+    background:radial-gradient(circle at 16% 20%, var(--gold), transparent 56%),
+               radial-gradient(circle at 86% 80%, #7B3F9E, transparent 56%);
+    filter:blur(36px); opacity:0.5;}
+  .oferta-inner{position:relative; border-radius:var(--radius); padding:40px 36px; text-align:center;
+    background:rgba(26,26,26,0.68); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px);
+    border:1px solid rgba(212,168,67,0.3);}
+  .oferta-inner h2{font-size:clamp(21px,3.2vw,26px); margin-bottom:6px;}
+  .oferta-sub{color:var(--muted); font-size:14px; margin-bottom:26px;}
+  .oferta-preco{display:flex; align-items:flex-end; justify-content:center; gap:22px; flex-wrap:wrap; margin-bottom:10px;}
+  .preco-seta{font-size:22px; color:rgba(212,168,67,0.55); padding-bottom:8px;}
+  .preco-antes{text-align:right;}
+  .preco-antes span{display:block; font-size:11px; font-weight:700; letter-spacing:0.08em;
+    text-transform:uppercase; color:var(--faint); margin-bottom:3px;}
+  .preco-antes b{font-family:var(--font-display); font-size:23px; font-weight:400; color:var(--faint); display:block; padding-bottom:7px;
+    text-decoration:line-through; text-decoration-thickness:1.5px; text-decoration-color:var(--gold);}
+  .preco-agora span{display:block; font-size:11px; font-weight:700; letter-spacing:0.08em;
+    text-transform:uppercase; color:var(--gold); margin-bottom:3px;}
+  .preco-agora b{font-family:var(--font-display); font-size:clamp(38px,6.5vw,52px); font-weight:400;
+    line-height:1; color:var(--gold-lt); letter-spacing:-0.5px;}
+  .preco-agora b i{font-style:normal; font-size:0.55em; color:var(--gold); margin-right:4px;}
+  .oferta-dia{font-size:13px; color:var(--faint); margin-bottom:24px;}
+  .oferta-economia{display:inline-block; font-family:var(--font-display); font-size:16px; color:var(--dark);
+    background:linear-gradient(135deg, var(--gold-lt), var(--gold)); padding:9px 22px; border-radius:999px;
+    margin-bottom:26px;}
+  .oferta-bonus{display:flex; align-items:center; gap:14px; text-align:left; max-width:440px; margin:0 auto 28px;
+    padding:16px 20px; border-radius:14px; background:var(--elevated); border:1px solid rgba(212,168,67,0.22);}
+  .oferta-bonus .mais{font-family:var(--font-display); font-size:30px; line-height:1; color:var(--gold); flex:none;}
+  .oferta-bonus strong{display:block; font-size:14.5px; margin-bottom:2px;}
+  .oferta-bonus small{font-size:12.5px; color:var(--muted); line-height:1.5;}
+  .oferta-fino{font-size:12px; color:var(--faint); margin-top:20px;}
+  @media (max-width:620px){
+    .oferta-inner{padding:32px 20px;}
+    .oferta-preco{gap:10px;}
+    .preco-antes{text-align:center;}
+    .preco-seta{display:none;}
+  }
   .chip{font-size:12.5px; color:var(--text); background:var(--elevated); border:1px solid var(--line);
     padding:7px 14px; border-radius:999px;}
 
@@ -244,7 +284,7 @@
     <div class="highlight-inner">
       <span class="tag">★ condição de Black Friday</span>
       <h2>Uma condição de Black Friday para quem começa agora</h2>
-      <p>A condição desta Black Friday eu falo com você direto no WhatsApp, caso a caso, depois de entender o seu objetivo e o seu momento. Ela vale por tempo limitado e é para quem entra no acompanhamento agora.</p>
+      <p>A condição desta Black Friday está no fim desta página: ela vale por tempo limitado e é para quem entra no acompanhamento agora.</p>
       <div class="included-note">✓ a sua entrada começa com avaliação física completa e uma consulta dedicada ao seu cardápio</div>
       <div class="chips">
         <span class="chip">Nutricionista clínico</span>
@@ -408,9 +448,37 @@
     </ul>
   </section>
 
+  <div class="oferta">
+    <div class="oferta-inner">
+      <span class="tag">★ oferta de Black Friday</span>
+      <h2>Acompanhamento VIP Platinum &middot; 6 meses</h2>
+      <p class="oferta-sub">Tudo o que está na lista acima, do questionário inicial ao último check-in.</p>
+
+      <div class="oferta-preco">
+        <div class="preco-antes"><span>valor normal</span><b>6&times; R$ 429</b></div>
+        <span class="preco-seta">→</span>
+        <div class="preco-agora"><span>nesta Black Friday</span><b><i>6&times;</i>R$ 339</b></div>
+      </div>
+      <p class="oferta-dia">R$ 11,30 por dia de acompanhamento, pelos seis meses inteiros.</p>
+
+      <div class="oferta-economia">Você economiza R$ 540</div>
+
+      <div class="oferta-bonus">
+        <span class="mais">+</span>
+        <div>
+          <strong>30 dias de treino, sem custo</strong>
+          <small>Treino montado pelo personal trainer do time, dentro do mesmo aplicativo, no primeiro mês.</small>
+        </div>
+      </div>
+
+      <a class="btn" href="https://wa.me/5511916963672?text=Oi!%20Vim%20da%20p%C3%A1gina%20da%20Black%20Friday%20e%20quero%20garantir%20a%20condi%C3%A7%C3%A3o%20de%206x%20R%24%20339." target="_blank" rel="noopener">Quero esta condição →</a>
+      <p class="oferta-fino">Condição válida por tempo limitado, para quem entra no acompanhamento agora.</p>
+    </div>
+  </div>
+
   <div class="cta">
     <h2>Seis meses podem mudar o seu final de 2026 e o seu 2027 inteiro.</h2>
-    <p>Me chama no WhatsApp: eu te explico como funciona o acompanhamento e qual é a condição desta Black Friday para o seu caso. Por tempo limitado.</p>
+    <p>Me chama no WhatsApp: eu te explico como funciona o acompanhamento e como garantir a condição desta Black Friday. Por tempo limitado.</p>
     <a class="btn" href="https://wa.me/5511916963672?text=Oi!%20Vim%20da%20p%C3%A1gina%20da%20Black%20Friday%20e%20quero%20come%C3%A7ar%20o%20acompanhamento." target="_blank" rel="noopener">Falar no WhatsApp →</a>
     <div class="footer-note">© 2026 Nutri Ademir Ferreira · São Paulo, SP</div>
   </div>
