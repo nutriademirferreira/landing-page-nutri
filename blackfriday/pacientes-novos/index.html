@@ -73,19 +73,20 @@
     border:1px solid rgba(212,168,67,0.3);}
   .oferta-inner h2{font-size:clamp(21px,3.2vw,26px); margin-bottom:6px;}
   .oferta-sub{color:var(--muted); font-size:14px; margin-bottom:26px;}
-  .oferta-preco{display:flex; align-items:flex-end; justify-content:center; gap:22px; flex-wrap:wrap; margin-bottom:10px;}
-  .preco-seta{font-size:22px; color:rgba(212,168,67,0.55); padding-bottom:8px;}
-  .preco-antes{text-align:right;}
-  .preco-antes span{display:block; font-size:11px; font-weight:700; letter-spacing:0.08em;
-    text-transform:uppercase; color:var(--faint); margin-bottom:3px;}
-  .preco-antes b{font-family:var(--font-display); font-size:23px; font-weight:400; color:var(--faint); display:block; padding-bottom:7px;
-    text-decoration:line-through; text-decoration-thickness:1.5px; text-decoration-color:var(--gold);}
-  .preco-agora span{display:block; font-size:11px; font-weight:700; letter-spacing:0.08em;
-    text-transform:uppercase; color:var(--gold); margin-bottom:3px;}
-  .preco-agora b{font-family:var(--font-display); font-size:clamp(38px,6.5vw,52px); font-weight:400;
+  .oferta-preco{display:flex; align-items:flex-end; justify-content:center; gap:26px; flex-wrap:wrap; margin-bottom:14px;}
+  .preco-seta{font-size:24px; color:rgba(212,168,67,0.5); padding-bottom:18px;}
+  .preco-antes, .preco-agora{text-align:center;}
+  .preco-antes span, .preco-agora span{display:block; font-size:11px; font-weight:700; letter-spacing:0.08em;
+    text-transform:uppercase; margin-bottom:4px;}
+  .preco-antes span{color:var(--faint);}
+  .preco-agora span{color:var(--gold);}
+  .preco-antes b{display:block; font-family:var(--font-display); font-size:clamp(30px,5vw,42px); font-weight:400;
+    line-height:1; color:var(--faint); padding-bottom:9px;
+    text-decoration:line-through; text-decoration-thickness:2px; text-decoration-color:var(--gold);}
+  .preco-agora b{display:block; font-family:var(--font-display); font-size:clamp(46px,8vw,70px); font-weight:400;
     line-height:1; color:var(--gold-lt); letter-spacing:-0.5px;}
-  .preco-agora b i{font-style:normal; font-size:0.55em; color:var(--gold); margin-right:4px;}
-  .oferta-total{font-size:13.5px; color:var(--text); margin-bottom:4px;}
+  .preco-parcela{font-family:var(--font-display); font-size:clamp(17px,2.6vw,21px); color:var(--text); margin-bottom:6px;}
+  .preco-parcela b{font-weight:400; color:var(--gold-lt);}
   .oferta-dia{font-size:13px; color:var(--faint); margin-bottom:24px;}
   .oferta-economia{display:inline-block; font-family:var(--font-display); font-size:16px; color:var(--dark);
     background:linear-gradient(135deg, var(--gold-lt), var(--gold)); padding:9px 22px; border-radius:999px;
@@ -98,8 +99,9 @@
   .oferta-fino{font-size:12px; color:var(--faint); margin-top:20px;}
   @media (max-width:620px){
     .oferta-inner{padding:32px 20px;}
-    .oferta-preco{gap:10px;}
-    .preco-antes{text-align:center;}
+    .oferta-preco{flex-direction:column; align-items:center; gap:4px; margin-bottom:12px;}
+    .preco-antes b{padding-bottom:2px;}
+    .preco-agora span{margin-top:8px;}
     .preco-seta{display:none;}
   }
   .chip{font-size:12.5px; color:var(--text); background:var(--elevated); border:1px solid var(--line);
@@ -456,11 +458,11 @@
       <p class="oferta-sub">Tudo o que está na lista acima, do questionário inicial ao último check-in.</p>
 
       <div class="oferta-preco">
-        <div class="preco-antes"><span>valor normal</span><b>6&times; R$ 429</b></div>
+        <div class="preco-antes"><span>valor normal</span><b>R$ 2.574</b></div>
         <span class="preco-seta">→</span>
-        <div class="preco-agora"><span>nesta Black Friday</span><b><i>6&times;</i>R$ 339</b></div>
+        <div class="preco-agora"><span>nesta Black Friday</span><b>R$ 2.034</b></div>
       </div>
-      <p class="oferta-total">R$ 2.034 no total, sem juros &middot; no valor normal seriam R$ 2.574</p>
+      <p class="preco-parcela">em <b>6&times; de R$ 339</b>, sem juros</p>
       <p class="oferta-dia">R$ 11,30 por dia de acompanhamento, pelos seis meses inteiros.</p>
 
       <div class="oferta-economia">Você economiza R$ 540</div>
