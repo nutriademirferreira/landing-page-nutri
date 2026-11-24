@@ -7,14 +7,14 @@
 <meta name="description" content="Condição de Black Friday para quem já foi paciente do Acompanhamento VIP Platinum. Veja o que mudou no acompanhamento desde que o seu plano terminou.">
 <meta name="robots" content="noindex, nofollow">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Operação volta para o seu nutri · Black Friday">
-<meta property="og:description" content="Condição de retorno só para quem já foi meu paciente. Veja o que mudou no acompanhamento desde que o seu plano terminou.">
-<meta property="og:image" content="https://vip.nutriademirferreira.com.br/blackfriday/preview.jpg">
+<meta property="og:title" content="Volte por 7 meses em 7x de R$ 289 · Black Week">
+<meta property="og:description" content="Contrate o semestral e ganhe 30 dias a mais de acompanhamento. Comece agora ou ative o seu plano em janeiro. Condição só para quem já foi meu paciente.">
+<meta property="og:image" content="https://vip.nutriademirferreira.com.br/blackfriday/preview-blackweek.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://vip.nutriademirferreira.com.br/blackfriday/">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://vip.nutriademirferreira.com.br/blackfriday/preview.jpg">
+<meta name="twitter:image" content="https://vip.nutriademirferreira.com.br/blackfriday/preview-blackweek.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
@@ -61,6 +61,51 @@
   .highlight > .highlight-inner > p{color:var(--muted); font-size:14.5px; max-width:600px; margin-bottom:20px;}
   .included-note{font-weight:700; font-size:11.5px; color:var(--gold); letter-spacing:0.04em; margin-bottom:18px;}
   .chips{display:flex; flex-wrap:wrap; gap:8px;}
+
+  /* OFERTA */
+  .oferta{position:relative; border-radius:var(--radius); margin:9vh 0 60px;}
+  .oferta::before{content:''; position:absolute; inset:-6px; border-radius:calc(var(--radius) + 6px);
+    background:radial-gradient(circle at 16% 20%, var(--gold), transparent 56%),
+               radial-gradient(circle at 86% 80%, #7B3F9E, transparent 56%);
+    filter:blur(36px); opacity:0.5;}
+  .oferta-inner{position:relative; border-radius:var(--radius); padding:40px 36px; text-align:center;
+    background:rgba(26,26,26,0.68); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px);
+    border:1px solid rgba(212,168,67,0.3);}
+  .oferta-inner h2{font-size:clamp(21px,3.2vw,26px); margin-bottom:6px;}
+  .oferta-sub{color:var(--muted); font-size:14px; margin-bottom:26px;}
+  .oferta-preco{display:flex; align-items:flex-end; justify-content:center; gap:26px; flex-wrap:wrap; margin-bottom:14px;}
+  .preco-seta{font-size:24px; color:rgba(212,168,67,0.5); padding-bottom:18px;}
+  .preco-antes, .preco-agora{text-align:center;}
+  .preco-antes span, .preco-agora span{display:block; font-size:11px; font-weight:700; letter-spacing:0.08em;
+    text-transform:uppercase; margin-bottom:4px;}
+  .preco-antes span{color:var(--faint);}
+  .preco-agora span{color:var(--gold);}
+  .preco-antes b{display:block; font-family:var(--font-display); font-size:clamp(38px,6.4vw,56px); font-weight:400;
+    line-height:1; color:var(--faint); padding-bottom:9px;
+    text-decoration:line-through; text-decoration-thickness:2.5px; text-decoration-color:var(--gold);}
+  .preco-agora b{display:block; font-family:var(--font-display); font-size:clamp(46px,8vw,70px); font-weight:400;
+    line-height:1; color:var(--gold-lt); letter-spacing:-0.5px;}
+  .preco-parcela{font-family:var(--font-display); font-size:clamp(17px,2.6vw,21px); color:var(--text); margin-bottom:6px;}
+  .preco-parcela b{font-weight:400; color:var(--gold-lt);}
+  .oferta-dia{font-size:13px; color:var(--faint); margin-bottom:24px;}
+  .oferta-economia{display:inline-block; font-family:var(--font-display); font-size:16px; color:var(--dark);
+    background:linear-gradient(135deg, var(--gold-lt), var(--gold)); padding:9px 22px; border-radius:999px;
+    margin-bottom:26px;}
+  .oferta-bonus{display:flex; align-items:center; gap:14px; text-align:left; max-width:440px; margin:0 auto 28px;
+    padding:16px 20px; border-radius:14px; background:var(--elevated); border:1px solid rgba(212,168,67,0.22);}
+  .oferta-bonus .mais{font-family:var(--font-display); font-size:30px; line-height:1; color:var(--gold); flex:none;}
+  .oferta-bonus strong{display:block; font-size:14.5px; margin-bottom:2px;}
+  .oferta-bonus small{font-size:12.5px; color:var(--muted); line-height:1.5;}
+  .oferta-fino{font-size:12px; color:var(--faint); margin-top:20px;}
+
+  @media (max-width:620px){
+    .oferta-inner{padding:32px 20px;}
+    .oferta-preco{flex-direction:column; align-items:center; gap:4px; margin-bottom:12px;}
+    .preco-antes b{padding-bottom:2px;}
+    .preco-agora span{margin-top:8px;}
+    .preco-seta{display:none;}
+  }
+
   .chip{font-size:12.5px; color:var(--text); background:var(--elevated); border:1px solid var(--line);
     padding:7px 14px; border-radius:999px;}
 
@@ -244,7 +289,7 @@
     <div class="highlight-inner">
       <span class="tag">★ condição de Black Friday</span>
       <h2>Uma condição de retorno, só para quem já foi meu paciente</h2>
-      <p>Esta página não está em anúncio nenhum. Ela foi feita para as pessoas que já foram meus pacientes e estão recebendo o link direto de mim. A condição desta Black Friday eu falo com você direto por aqui, caso a caso, personalizada.</p>
+      <p>Esta página não está em anúncio nenhum. Ela foi feita para as pessoas que já foram meus pacientes e estão recebendo o link direto de mim. A condição desta Black Week está no fim desta página.</p>
       <div class="included-note">✓ seu histórico já está na ficha — você recomeça de onde parou</div>
       <div class="chips">
         <span class="chip">Nutricionista clínico</span>
@@ -399,6 +444,43 @@
       <li><button class="item-toggle">Suporte iFood, psicóloga e treino inicial<span class="chevron">+</span></button><div class="item-desc"><p>Os três bônus do Platinum: orientação em até cinco restaurantes do delivery, uma sessão com a psicóloga do time e o treino inicial montado pelo personal trainer.</p></div></li>
     </ul>
   </section>
+
+  <div class="oferta">
+    <div class="oferta-inner">
+      <span class="tag">★ oferta da Black Week</span>
+      <h2>Volte por sete meses &mdash; e escolha quando começar</h2>
+      <p class="oferta-sub">Você contrata o semestral e ganha 30 dias a mais de acompanhamento.</p>
+
+      <div class="oferta-preco">
+        <div class="preco-antes"><span>sete meses na tabela normal</span><b>R$ 3.003</b></div>
+        <span class="preco-seta">→</span>
+        <div class="preco-agora"><span>nesta Black Week</span><b>R$ 2.023</b></div>
+      </div>
+      <p class="preco-parcela">em <b>7&times; de R$ 289</b>, sem juros</p>
+      <p class="oferta-dia">Menos de R$ 10 por dia, pelos sete meses inteiros.</p>
+
+      <div class="oferta-economia">Você economiza R$ 980</div>
+
+      <div class="oferta-bonus">
+        <span class="mais">+</span>
+        <div>
+          <strong>Um mês inteiro por nossa conta</strong>
+          <small>São seis meses contratados e 30 dias a mais de acompanhamento: você fica sete meses comigo e com o time.</small>
+        </div>
+      </div>
+
+      <div class="oferta-bonus">
+        <span class="mais">+</span>
+        <div>
+          <strong>Comece agora ou ative o plano em janeiro</strong>
+          <small>Se você quer estratégia para atravessar o fim do ano, a gente começa nesta semana. Se prefere virar o ano e dar o start com tudo, marcamos o início para a primeira semana de janeiro &mdash; a condição fica guardada para você do mesmo jeito.</small>
+        </div>
+      </div>
+
+      <a class="btn" href="https://wa.me/5511916963672?text=Oi!%20Vim%20da%20p%C3%A1gina%20da%20Black%20Week%20e%20quero%20voltar%20ao%20acompanhamento%20com%20a%20condi%C3%A7%C3%A3o%20de%207x%20R%24%20289." target="_blank" rel="noopener">Quero voltar →</a>
+      <p class="oferta-fino">Condição desta Black Week, para quem já foi meu paciente.</p>
+    </div>
+  </div>
 
   <div class="cta">
     <h2>Você já passou por essa experiência antes e sabe como foi transformadora. Agora está ainda melhor.</h2>
