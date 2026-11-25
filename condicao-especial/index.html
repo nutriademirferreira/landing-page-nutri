@@ -61,15 +61,15 @@
     padding:7px 14px; border-radius:999px;}
 
   /* QUEBRA DE OBJEÇÃO — mesmo tratamento das páginas de produto da Nexxo */
-  .journey{text-align:center; padding:6vh 0 2vh; margin-bottom:0;}
+  .journey{text-align:center; padding:6vh 0 2vh; margin-bottom:40px;}
   .journey-head .kicker{
     display:inline-block; font-size:11px; font-weight:700; color:var(--gold); background:var(--gold-dim);
     padding:5px 14px; border-radius:999px; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:14px;
   }
   .journey-head h2{font-size:clamp(22px,3.5vw,28px); max-width:520px; margin:0 auto;}
   .journey-steps{position:relative; text-align:left;}
-  .jstep{position:relative; height:62vh;}
-  .jstep:last-child{height:30vh;}
+  .jstep{position:relative; height:62vh; min-height:430px;}
+  .jstep:last-child{height:46vh; min-height:360px;}
   .jstep-q, .jstep-a{
     position:absolute; max-width:420px; padding:16px 20px; font-size:15px; line-height:1.55;
     border-radius:14px;
@@ -174,9 +174,10 @@
   .vitrine{display:grid; grid-template-columns:auto 1fr; gap:54px; align-items:center; margin-bottom:46px;}
   .vitrine-texto h3{font-size:22px; margin-bottom:12px;}
   .vitrine-texto p{color:var(--muted); font-size:15px; margin-bottom:14px; max-width:460px;}
-  .vitrine-texto .selo{display:inline-flex; align-items:center; gap:8px; font-size:12.5px; color:var(--gold);
+  .vitrine-selo{text-align:center; margin-top:34px;}
+  .vitrine-texto .selo, .vitrine-selo .selo{display:inline-flex; align-items:center; gap:8px; font-size:12.5px; color:var(--gold);
     border:1px solid var(--line-strong); border-radius:999px; padding:7px 14px;}
-  .fone{position:relative; width:258px; flex-shrink:0; justify-self:center;}
+  .fone{position:relative; width:min(300px, 72vw, 34vh); flex-shrink:0; justify-self:center;}
   .fone::after{content:''; position:absolute; inset:-22px -14px -26px; border-radius:60px; z-index:-1;
     background:radial-gradient(circle at 50% 42%, rgba(212,168,67,0.30), transparent 68%); filter:blur(26px);}
   .fone-corpo{position:relative; border-radius:40px; padding:9px; background:linear-gradient(160deg,#4a4a4a,#101010 42%,#2c2c2c);
@@ -188,17 +189,17 @@
   .fone-brilho{position:absolute; inset:0; border-radius:32px; pointer-events:none; z-index:1;
     background:linear-gradient(118deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0) 32%);}
   @media (max-width:820px){
-    .vitrine{grid-template-columns:1fr; gap:30px; text-align:center;}
+    .vitrine{grid-template-columns:1fr; gap:26px; text-align:center;}
+    .vitrine-texto{order:-1;}
     .vitrine-texto p{margin-left:auto; margin-right:auto;}
-    .fone{width:222px;}
+    .fone{width:min(290px, 76vw, 37vh);}
   }
 
   /* APP NAVEGÁVEL dentro do mockup: a tela rola e a barra de abas fica fixa */
   .app-palco{position:relative; line-height:0;}
-  .app-janela{position:relative; aspect-ratio:480/1039; overflow-y:auto; overflow-x:hidden;
-    -webkit-overflow-scrolling:touch; scrollbar-width:none; background:#E5EADA;}
-  .app-janela::-webkit-scrollbar{display:none;}
+  .app-janela{position:relative; aspect-ratio:480/1039; overflow:hidden; background:#E5EADA;}
   .app-janela .app-tela{display:none; width:100%; height:auto;}
+  .app-palco{touch-action:pan-y;}
   .app-janela .app-tela.ativa{display:block;}
   .app-nav{position:absolute; left:0; right:0; bottom:0; height:6.83%; z-index:4;}
   .app-barra{display:none; width:100%; height:100%; object-fit:cover;}
@@ -210,7 +211,16 @@
   .app-vista, .app-treino-sel{display:none;}
   .app-palco[data-atual^="evolucao"] .app-vista{display:block;}
   .app-palco[data-atual="treino"] .app-treino-sel, .app-palco[data-atual="cardio"] .app-treino-sel{display:block;}
-  .app-dica{margin-top:16px; text-align:center; font-size:12.5px; color:var(--faint);}
+  .app-chamada{position:absolute; left:50%; bottom:9.6%; z-index:6; pointer-events:none;
+    background:var(--gold); color:#0D0D0D; font-size:11px; font-weight:700; letter-spacing:0.03em;
+    padding:6px 13px; border-radius:999px; white-space:nowrap;
+    box-shadow:0 8px 22px -6px rgba(0,0,0,0.7); animation:appPulso 1.9s ease-in-out infinite;}
+  .app-chamada::after{content:''; position:absolute; left:50%; bottom:-5px; margin-left:-6px;
+    border-left:6px solid transparent; border-right:6px solid transparent; border-top:6px solid var(--gold);}
+  .app-palco[data-tocado="1"] .app-chamada{display:none;}
+  @keyframes appPulso{0%,100%{transform:translate(-50%,0)} 50%{transform:translate(-50%,-6px)}}
+  @media (prefers-reduced-motion:reduce){ .app-chamada{animation:none; transform:translate(-50%,0);} }
+  .app-dica{margin-top:14px; text-align:center; font-size:12.5px; color:var(--muted); line-height:1.5;}
   .app-dica b{color:var(--gold); font-weight:500;}
 </style>
 </head>
@@ -330,7 +340,7 @@
   <section>
     <div class="section-head">
       <h2>O aplicativo do acompanhamento</h2>
-      <p>Navegue agora pelas telas de uma paciente de verdade</p>
+      <p>As telas de uma paciente de verdade, do jeito que ela v&ecirc;</p>
     </div>
     <div class="vitrine">
       <div class="fone">
@@ -371,18 +381,19 @@
               <button class="app-toque" data-ir="exames" aria-label="Abrir Exames" style="left:66.15%;width:16.15%"></button>
               <button class="app-toque" data-ir="mais" aria-label="Abrir Mais" style="left:82.31%;width:16.15%"></button>
             </div>
+            <div class="app-chamada">toque nas abas para navegar</div>
           </div>
           </div>
         </div>
-        <div class="app-dica">toque nas abas · <b>role a tela</b> · arraste para o lado</div>
+        <div class="app-dica"><b>Toque nas abas de baixo</b> para abrir cada parte do aplicativo</div>
       </div>
       <div class="vitrine-texto">
-        <h3>Navegue pelo aplicativo aqui mesmo</h3>
-        <p>Este é o aplicativo de uma paciente do acompanhamento, com as telas dela de verdade. Toque na barra de baixo para abrir cada aba, e dentro de Evolu&ccedil;&atilde;o troque entre Corpo, H&aacute;bitos, Medidas e Fotos.</p>
+        <h3>Toque e navegue voc&ecirc; mesmo</h3>
+        <p>Toque na barra de baixo para abrir cada aba. Dentro de Evolu&ccedil;&atilde;o, troque entre Corpo, H&aacute;bitos, Medidas e Fotos.</p>
         <p>Dieta, treino, cardio, medidas, fotos e exames ficam no seu bolso, atualizados a cada avalia&ccedil;&atilde;o. Nada de PDF perdido na conversa do WhatsApp.</p>
-        <span class="selo">&darr; veja as condi&ccedil;&otilde;es de investimento</span>
       </div>
     </div>
+    <div class="vitrine-selo"><span class="selo">&darr; veja as condi&ccedil;&otilde;es de investimento</span></div>
   </section>
 
   <section id="investimento">
@@ -471,7 +482,9 @@
 
   var stepObserver = new IntersectionObserver(function(entries){
     entries.forEach(function(entry){
-      entry.target.classList.toggle('in-view', entry.isIntersecting);
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('in-view');
+      stepObserver.unobserve(entry.target);
     });
   }, { threshold: 0.2 });
   document.querySelectorAll('.reveal-left, .reveal-right').forEach(function(el){ stepObserver.observe(el); });
@@ -494,19 +507,7 @@
       janela.scrollTop = 0;
     }
     palco.querySelectorAll('.app-toque').forEach(function(b){
-      b.addEventListener('click', function(e){ e.preventDefault(); mostrar(b.dataset.ir); });
-    });
-    var x0 = null, y0 = null;
-    palco.addEventListener('pointerdown', function(e){ x0 = e.clientX; y0 = e.clientY; });
-    palco.addEventListener('pointerup', function(e){
-      if (x0 === null) return;
-      var dx = e.clientX - x0, dy = e.clientY - y0; x0 = null;
-      if (Math.abs(dx) < 50 || Math.abs(dx) < Math.abs(dy)) return;  // rolar não troca de aba
-      var atual = palco.dataset.atual || 'hoje';
-      if (atual.indexOf('evolucao') === 0) atual = 'evolucao-corpo';
-      if (atual === 'cardio') atual = 'treino';
-      var i = ordem.indexOf(atual); if (i < 0) i = 0;
-      mostrar(ordem[Math.min(ordem.length - 1, Math.max(0, i + (dx < 0 ? 1 : -1)))]);
+      b.addEventListener('click', function(e){ e.preventDefault(); palco.dataset.tocado = '1'; mostrar(b.dataset.ir); });
     });
     palco.addEventListener('dragstart', function(e){ e.preventDefault(); });
   })();
